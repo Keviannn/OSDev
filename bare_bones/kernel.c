@@ -88,6 +88,19 @@ void terminal_initialize(void)
 }
 
 /*
+ * Move every character one row back
+ */
+void scroll_buffer(void)
+{
+	for (size_t y = 0; y < VGA_HEIGHT; y++) {
+		for (size_t x = 0; x < VGA_WIDTH; x++) {
+			const size_t index = y * VGA_WIDTH + x;
+			terminal_buffer[index] = vga_entry(terminal_buffer[index + VGA_WIDTH], terminal_color); 
+		}
+	}
+}
+
+/*
  * Change the terminal bg and fg of the characters.
  */
 void terminal_setcolor(uint8_t color) 
@@ -107,20 +120,18 @@ void terminal_putentryat(char c, uint8_t color, size_t x, size_t y)
 
 void terminal_putchar(char c) 
 {
-    if (c == '\n')
-    {
-        terminal_row++;
-        terminal_column = 0;
+    if (c == '\n') {
         if (terminal_row == VGA_HEIGHT)
-            terminal_row = 0;
+            scroll_buffer();
+        else {
+            terminal_row++;
+            terminal_column = 0;
+        }
     }
-    else
-    {
+    else {
         terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
         if (++terminal_column == VGA_WIDTH) {
             terminal_column = 0;
-            if (++terminal_row == VGA_HEIGHT)
-                terminal_row = 0;
         }
     }
 }
@@ -144,4 +155,27 @@ void kernel_main(void)
 	terminal_writestring("Hello, kernel World!\n");
     terminal_writestring("Now we have newline implemented!\n");
     terminal_writestring("Yaaay!!\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("Filler\n");
+    terminal_writestring("This should not be written at the top\n");
 }
