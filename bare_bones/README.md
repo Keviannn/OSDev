@@ -39,16 +39,6 @@ Run kernel:
 2. With the binary: `qemu-system-i386 -kernel myos`
 
 ## Continuing
-**Adding Support for Newlines to Terminal Driver**
-
-The current terminal driver does not handle newlines. The VGA text mode font stores another character at the location, since newlines are never meant to be actually rendered: they are logical entities. Rather, in terminal_putchar check if c == '\n' and increment terminal_row and reset terminal_column.
-
-**Implementing Terminal Scrolling**
-
-In case the terminal is filled up, it will just go back to the top of the screen. This is unacceptable for normal use. Instead, it should move all rows up one row and discard the upper most, and leave a blank row at the bottom ready to be filled up with characters. Implement this.
-
 **Rendering Colorful ASCII Art**
 
 Use the existing terminal driver to render some pretty stuff in all the glorious 16 colors you have available. Note that only 8 colors may be available for the background color, as the uppermost bit in the entries by default means something other than background color. You'll need a real VGA driver to fix this. 
-
-
