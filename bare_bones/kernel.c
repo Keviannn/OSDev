@@ -111,6 +111,8 @@ void terminal_putchar(char c)
     {
         terminal_row++;
         terminal_column = 0;
+        if (terminal_row == VGA_HEIGHT)
+            terminal_row = 0;
     }
     else
     {
@@ -139,8 +141,7 @@ void kernel_main(void)
 	/* Initialize terminal interface */
 	terminal_initialize();
 
-	/* Newline support is left as an exercise. */
 	terminal_writestring("Hello, kernel World!\n");
     terminal_writestring("Now we have newline implemented!\n");
-    terminal_writestring("Yaaay!!");
+    terminal_writestring("Yaaay!!\n");
 }
