@@ -17,3 +17,11 @@ Making a super complex and usable OS is not my main goal, as I am still an under
 For now the structure will be a directory for every tutorial or piece of code with its own README for me to add notes and review in the future, probably with links to the OSDev webpage.
 
 If the project ends up growing over this approach, I will desing a more compact and navigable structure.
+
+## Articles read
+- [x] 1.    [UEFI Bare Bones](https://wiki.osdev.org/UEFI_App_Bare_Bones)
+- [x] 2.    [Bare Bones](https://wiki.osdev.org/Bare_Bones)
+    - [x] 2.1.    [Cross Compiler](https://wiki.osdev.org/GCC_Cross-Compiler)
+- [ ] 3.    [Meaty Skeleton](https://wiki.osdev.org/Meaty_Skeleton)
+    - [ ] 3.1.    [Stan Dard](https://wiki.osdev.org/Stan_Dard)
+- [ ] 4. [Going Further on x86](https://wiki.osdev.org/Going_Further_on_x86)
